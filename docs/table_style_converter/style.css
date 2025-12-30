@@ -1,0 +1,19 @@
+.app-main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.app-input,
+.app-output {
+    max-width: 40em;
+}
+
+.text-io__textarea {
+    width: 100%;
+    height: 10em;
+}
+
+.app-button {
+    padding: 0.5em;
+}

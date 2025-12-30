@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head lang='ja-jp'>
+    <meta charset='UTF-8'/>
+    <meta name='viewport' content='width=device-width'/>
+    <title>Table Style Converter</title>
+    <link rel='stylesheet' href='style.css'/>
+    <script src='index.js' defer></script>
+  </head>
+  <body>
+    <header class='app-header'>
+      <h1 class='app-title'>Table Style Converter</h1>
+      <p class='app-description'>
+        NotionのテーブルからWikiのテーブルに変換する。
+      </p>
+    </header>
+
+    <main class='app-main'>
+      <section class='app-input'>
+        <h2>Notion Table</h2>
+        <div class='text-io'>
+          <textarea class='text-io__textarea' id='convert-input'>
+          </textarea>
+        </div>
+      </section>
+
+      <div class='app-actions'>
+        <button type='button' class='app-button' id='convert-button'>
+          Convert
+        </button>
+      </div>
+
+      <section class='app-output'>
+        <h2>Wiki Table</h2>
+        <div class='text-io'>
+          <button class='app-button' id='copy-button'>
+            Copy
+          </button>
+          <textarea class='text-io__textarea' id='convert-output' readonly>
+          </textarea>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
