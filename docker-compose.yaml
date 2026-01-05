@@ -1,0 +1,9 @@
+services:
+  hugo:
+    build: .
+    user: "1000:1000"
+    volumes:
+      - .:/home/water-dropwort/project
+    working_dir: /home/water-dropwort/project
+    ports:
+      - "1313:1313"

@@ -1,0 +1,47 @@
+.page {
+    margin: 0;
+    background-color: rgb(30, 30, 30);
+    color: whitesmoke;
+}
+
+.page-header {
+    background: yellow;
+    color: black;
+    align-content: center;
+    padding: 0.5em;
+}
+
+.page-header__title {
+    color: black;
+    font-size: 1.5em;
+}
+
+.page-main {}
+
+.content {
+    padding: 1em;
+}
+
+.content__title {
+    font-size: 1.75em;
+}
+
+.content__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.button {
+    font-size: 1em;
+    padding: 0.25em;
+}
+
+.tool-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-section__title {
+    font-size: 1.5em;
+}
