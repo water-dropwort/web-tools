@@ -1,7 +1,12 @@
+:root {
+    --color-text-main: whitesmoke;
+    --color-background-main: rgb(30, 30, 30);
+}
+
 .page {
     margin: 0;
-    background-color: rgb(30, 30, 30);
-    color: whitesmoke;
+    background-color: var(--color-background-main);
+    color: var(--color-text-main);
 }
 
 .page-header {
@@ -14,6 +19,28 @@
 .page-header__title {
     color: black;
     font-size: 1.5em;
+}
+
+.page-nav {
+    background-color: var(--color-background-main);
+}
+
+.page-nav__list {}
+
+.page-nav__item {
+    padding: 0.25em;
+}
+
+.page-nav__item_current {
+    background-color: yellow;
+}
+
+.page-nav__link {
+    color: var(--color-text-main);
+}
+
+.page-nav__link_current {
+    color: black;
 }
 
 .page-main {}
