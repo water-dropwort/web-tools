@@ -7,38 +7,40 @@
     <link rel='stylesheet' href='/style.css'/>
   </head>
   <body class='page'>
-    <header class='page-header'>
-      <a class='page-header__title' href='/'>
-        Water Dropwort's Web Tools
-      </a>
-    </header>
+    <div class='page-layout'>
+      <header class='page-header page-layout__header'>
+        <a class='page-header__title' href='/'>
+          Water Dropwort's Web Tools
+        </a>
+      </header>
 
-    <nav class='page-nav'>
-      {{ $current_page := .Permalink }}
-      {{ range .Site.RegularPages }}
-      <ul class='page-nav__list'>
-        {{ if eq $current_page .Permalink }}
-        <li class='page-nav__item page-nav__item_current'>
-          <a href='{{ .RelPermalink }}'
-             class='page-nav__link page-nav__link_current'>
-            {{ .LinkTitle }}
-          </a>
-        </li>
-        {{ else }}
-        <li class='page-nav__item'>
-          <a href='{{ .RelPermalink }}'
-             class='page-nav__link'>
-            {{ .LinkTitle }}
-          </a>
-        </li>
+      <nav class='page-nav page-layout__nav'>
+        {{ $current_page := .Permalink }}
+        {{ range .Site.RegularPages }}
+        <ul class='page-nav__list'>
+          {{ if eq $current_page .Permalink }}
+          <li class='page-nav__item page-nav__item_current'>
+            <a href='{{ .RelPermalink }}'
+               class='page-nav__link page-nav__link_current'>
+              {{ .LinkTitle }}
+            </a>
+          </li>
+          {{ else }}
+          <li class='page-nav__item'>
+            <a href='{{ .RelPermalink }}'
+               class='page-nav__link'>
+              {{ .LinkTitle }}
+            </a>
+          </li>
+          {{ end }}
+        </ul>
         {{ end }}
-      </ul>
-      {{ end }}
-    </nav>
+      </nav>
 
-    <main class='page-main'>
-      {{ block "main" . }}
-      {{ end }}
-    </main>
+      <main class='page-main page-layout__main'>
+        {{ block "main" . }}
+        {{ end }}
+      </main>
+    </div>
   </body>
 </html>
