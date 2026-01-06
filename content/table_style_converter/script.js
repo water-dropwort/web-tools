@@ -35,7 +35,7 @@ function isTableSeparator(line) {
 function isEndOfRow(line) {
     return line.endsWith('|');
 }
-console.log(convertButton);
+
 convertButton.addEventListener('click', (e) => {
     const inputText = convertInput.value;
     const convertResult = convertTableStyle(inputText);
