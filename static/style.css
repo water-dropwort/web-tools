@@ -1,0 +1,94 @@
+:root {
+    --color-text-main: whitesmoke;
+    --color-background-main: rgb(30, 30, 30);
+}
+
+.page {
+    margin: 0;
+    background-color: var(--color-background-main);
+    color: var(--color-text-main);
+}
+
+.page-layout {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.page-layout__header {
+    grid-row: 1;
+    grid-column: 1 / 3;
+}
+
+.page-layout__nav {
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.page-layout__main {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.page-header {
+    background: yellow;
+    color: black;
+    align-content: center;
+    padding: 0.5em;
+}
+
+.page-header__title {
+    color: black;
+    font-size: 1.5em;
+}
+
+.page-nav {
+    background-color: var(--color-background-main);
+}
+
+.page-nav__list {}
+
+.page-nav__item {
+    padding: 0.25em;
+}
+
+.page-nav__item_current {
+    background-color: yellow;
+}
+
+.page-nav__link {
+    color: var(--color-text-main);
+}
+
+.page-nav__link_current {
+    color: black;
+}
+
+.page-main {}
+
+.content {
+    padding: 1em;
+}
+
+.content__title {
+    font-size: 1.75em;
+}
+
+.content__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.button {
+    font-size: 1em;
+    padding: 0.25em;
+}
+
+.tool-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-section__title {
+    font-size: 1.5em;
+}
