@@ -1,0 +1,17 @@
+/*
+ * Content for Table Style Converter
+ */
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.content > .content__section + .content__section {
+    margin-top: 2em;
+}
+
+.content__textarea {
+    height: 20em;
+    width: 100%;
+    box-sizing: border-box;
+}

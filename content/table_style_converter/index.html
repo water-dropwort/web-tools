@@ -2,29 +2,37 @@
 title: Table Style Converter
 ---
 
-<section class='tool-section'>
-  <h2 class='tool-section__title'>Notion Table</h2>
+<article class='content'>
+  <h1>Table Style Converter</h1>
 
-  <textarea class='app-textarea' id='convert-input'></textarea>
-</section>
+  <section class='content__section'>
+    <h2>Notion Table</h2>
 
-<div class='app-actions'>
-  <button type='button' class='button' id='convert-button'>
-    Convert
-  </button>
-</div>
+    <div class='hoge'>
+      <textarea class='content__textarea'
+                id='convert-input'></textarea>
+    </div>
+  </section>
 
-<section class='tool-section'>
-  <h2 class='tool-section__title'>Wiki Table</h2>
-
-  <div class='app-actions'>
-    <button type='button' class='button' id='copy-button'>
-      Copy
+  <div class='content__section'>
+    <button type='button' class='button' id='convert-button'>
+      Convert
     </button>
   </div>
 
-  <textarea class='app-textarea' id='convert-output'></textarea>
-</section>
+  <section class='content__section'>
+    <h2>Wiki Table</h2>
 
-<script src='script.js'></script>
-<link rel='stylesheet' href='style.css'/>
+    <div>
+      <button type='button' class='button' id='copy-button'>
+        Copy
+      </button>
+    </div>
+
+    <textarea class='content__textarea'
+              id='convert-output'></textarea>
+  </section>
+
+  <script src='script.js'></script>
+  <link rel='stylesheet' href='content.css'/>
+</article>

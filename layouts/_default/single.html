@@ -1,9 +1,30 @@
-{{ define "main" }}
-<article class='content'>
-  <h1 class='content__title'>{{ .Title }}</h1>
+{{ define "app" }}
+<div class='app'>
+  <nav class='app__nav'>
+    {{ $current_page := .RelPermalink }}
+    <ul class='list'>
+      {{ range .Site.RegularPages }}
+      {{ if eq $current_page .RelPermalink }}
+      <li class='list__item list__item--highlight'>
+        <a href='{{ .RelPermalink }}'
+           class='link link--on-highlight'>
+          {{ .LinkTitle }}
+        </a>
+      </li>
+      {{ else }}
+      <li class='list__item'>
+        <a href='{{ .RelPermalink }}'
+           class='link link--on-dark'>
+          {{ .LinkTitle }}
+        </a>
+      </li>
+      {{ end }}
+      {{ end }}
+    </ul>
+  </nav>
 
-  <div class='content__body'>
+  <main class='app__main'>
     {{ .Content }}
-  </div>
-</article>
+  </main>
+</div>
 {{ end }}

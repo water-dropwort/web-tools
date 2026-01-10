@@ -1,0 +1,8 @@
+/* Home */
+.home {
+    padding: 2em;
+}
+
+.home > .home__section + .home__section {
+    margin-top: 2em;
+}

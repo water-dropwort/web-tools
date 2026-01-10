@@ -1,5 +1,28 @@
-{{ define "main" }}
-<span>
-  This is Water-Dropwort's Web Tools
-</span>
+{{ define "home" }}
+<main class='home'>
+  <h1>Water Dropwort's Web Tools</h1>
+
+  <section class='home__section'>
+    <h2>Description</h2>
+    <p>
+      ブラウザ上で動作するツール集です。
+    </p>
+  </section>
+
+  <section class='home__section'>
+    <h2>Table of Contents</h2>
+
+    <nav>
+      <ul class='list'>
+        {{ range .Site.RegularPages }}
+        <li class='list__item'>
+          <a href='{{ .RelPermalink }}'
+             class='link link--on-dark'>
+            {{ .LinkTitle }}
+          </a>
+        </li>
+        {{ end }}
+      </ul>
+    </nav>
+</main>
 {{ end }}
