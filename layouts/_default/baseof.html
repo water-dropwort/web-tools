@@ -4,12 +4,12 @@
     <meta charset='UTF-8'/>
     <meta name='viewport' content='width=device-width'/>
     <title>{{ .Title }} | Water Dropwort's Web Tools</title>
-    <link rel='stylesheet' href='/style.css'/>
+    <link rel='stylesheet' href='{{ relURL "style.css" }}'/>
   </head>
   <body class='page'>
     <div class='page-layout'>
       <header class='page-header page-layout__header'>
-        <a class='page-header__title' href='/'>
+        <a class='page-header__title' href='{{ relURL "" }}'>
           Water Dropwort's Web Tools
         </a>
       </header>
