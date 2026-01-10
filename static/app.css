@@ -1,0 +1,16 @@
+/* App */
+.app {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    padding-left: 1em;
+    padding-right: 1em;
+    column-gap: 1em;
+}
+
+.app__nav {
+    grid-column: 1;
+}
+
+.app__main {
+    grid-column: 2;
+}
