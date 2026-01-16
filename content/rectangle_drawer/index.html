@@ -1,0 +1,35 @@
+---
+title: Rectangle Drawer
+---
+
+<article>
+  <h1>Rectangle Drawer</h1>
+
+  <section>
+    <h2>使用方法</h2>
+    <p>
+      クリップボードの画像をペーストすると、白枠のところに画像が取り込まれる。<br>
+      マウスダウンしてポインタを動かし、離すと、矩形が描画される。
+    </p>
+    <ul class='list'>
+      <li class='list__item'>Copy: クリップボードに画像をコピーする。</li>
+      <li class='list__item'>Reset: 編集内容をすべて削除し、初期状態にする。</li>
+    </ul>
+  </section>
+
+  <section>
+    <div>
+      <button type='button' class='button' id='copyButton'>
+        Copy
+      </button>
+      <button type='button' class='button' id='resetButton'>
+        Reset
+      </button>
+    </div>
+
+    <canvas id='canvas' class='canvas canvas--on-dark'></canvas>
+  </section>
+
+  <script src='script.js'></script>
+  <link rel='stylesheet' href='content.css'/>
+</article>
