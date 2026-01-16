@@ -1,0 +1,5 @@
+.canvas {}
+
+.canvas--on-dark {
+    border: 1px solid white;
+}
