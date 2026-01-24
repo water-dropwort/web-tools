@@ -60,3 +60,13 @@
     font-size: 1em;
     padding: 0.25em;
 }
+
+/* Warning Text */
+.warning-text {}
+
+.warning-text::before {
+    content: "⚠";
+    color: orange;
+    font-weight: bold;
+    margin-right: 0.25em;
+}
