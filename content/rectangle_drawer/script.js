@@ -76,7 +76,8 @@ canvas.addEventListener('pointerup', (e) => {
 resetButton.addEventListener('click', (e) => {
     if(!drawingState.rawImage) return;
 
-    ctx.putImageData(drawingState.rawImage, 0, 0);
+    drawingState.scale = 1;
+    resize(drawingState.scale);
 });
 
 
