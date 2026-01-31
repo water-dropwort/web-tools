@@ -1,3 +1,4 @@
+const LINE_COLOR_DEFAULT = "#ffa500";
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const drawingState = {
@@ -8,10 +9,14 @@ const drawingState = {
     startY: null,
     endX: null,
     endY: null,
+    lineColor: null,
 };
 const resetButton = document.getElementById('resetButton');
 const copyButton = document.getElementById('copyButton');
+const lineColorPicker = document.getElementById('lineColor');
 
+// 画面が読み込まれたときに初期化処理を実行する。
+window.addEventListener("load", startup, false);
 
 // 画像をクリップボードからキャンバスに貼り付ける
 document.addEventListener('paste', (e) => {
@@ -88,6 +93,18 @@ copyButton.addEventListener('click', async (e) => {
 });
 
 
+// カラーピッカーで色が変更されたら、それ以降に描画する矩形の線色を変更する。
+// すでに描画されている矩形の線色は変わらない。
+lineColorPicker.addEventListener('change', lineColorChanged, false);
+
+
+// 初期化処理
+function startup() {
+    drawingState.lineColor = LINE_COLOR_DEFAULT;
+    lineColorPicker.value = LINE_COLOR_DEFAULT;
+}
+
+
 // クリップボードから画像を取得し、URLを返す。
 function getImageObjURL(clipboardData) {
     for(const item of clipboardData.items) {
@@ -114,9 +131,14 @@ function drawRectangle({startX, startY, endX, endY}, isPreview = false) {
         ctx.setLineDash([]);
     }
 
-    ctx.strokeStyle = 'orange';
+    ctx.strokeStyle = drawingState.lineColor;
     ctx.lineWidth = 2;
     ctx.strokeRect(minX, minY, maxX - minX, maxY - minY);
 
     ctx.restore();
+}
+
+// 矩形の線色を変更する。
+function lineColorChanged(e) {
+    drawingState.lineColor = e.target.value;
 }
