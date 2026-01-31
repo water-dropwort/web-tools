@@ -1,4 +1,8 @@
 const LINE_COLOR_DEFAULT = "#ffa500";
+const LINE_WIDTH_DEFAULT = 2;
+const LINE_WIDTH_MIN = 1;
+const LINE_WIDTH_MAX = 10;
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const drawingState = {
@@ -10,10 +14,12 @@ const drawingState = {
     endX: null,
     endY: null,
     lineColor: null,
+    lineWidth: null,
 };
 const resetButton = document.getElementById('resetButton');
 const copyButton = document.getElementById('copyButton');
 const lineColorPicker = document.getElementById('lineColor');
+const lineWidthInput = document.getElementById('lineWidth');
 
 // 画面が読み込まれたときに初期化処理を実行する。
 window.addEventListener("load", startup, false);
@@ -98,10 +104,19 @@ copyButton.addEventListener('click', async (e) => {
 lineColorPicker.addEventListener('change', lineColorChanged, false);
 
 
+// 矩形の線幅を変更する。
+lineWidthInput.addEventListener('change', lineWidthChanged, false);
+
+
 // 初期化処理
 function startup() {
     drawingState.lineColor = LINE_COLOR_DEFAULT;
     lineColorPicker.value = LINE_COLOR_DEFAULT;
+
+    drawingState.lineWidth = LINE_WIDTH_DEFAULT;
+    lineWidthInput.value = LINE_WIDTH_DEFAULT.toString();
+    lineWidthInput.max = LINE_WIDTH_MAX.toString();
+    lineWidthInput.min = LINE_WIDTH_MIN.toString();
 }
 
 
@@ -132,7 +147,7 @@ function drawRectangle({startX, startY, endX, endY}, isPreview = false) {
     }
 
     ctx.strokeStyle = drawingState.lineColor;
-    ctx.lineWidth = 2;
+    ctx.lineWidth = drawingState.lineWidth;
     ctx.strokeRect(minX, minY, maxX - minX, maxY - minY);
 
     ctx.restore();
@@ -141,4 +156,20 @@ function drawRectangle({startX, startY, endX, endY}, isPreview = false) {
 // 矩形の線色を変更する。
 function lineColorChanged(e) {
     drawingState.lineColor = e.target.value;
+}
+
+// 矩形の線幅を変更する。
+function lineWidthChanged(e) {
+    let newLineWidth = e.target.valueAsNumber;
+
+    // MIN-MAXの範囲になるように調整する。
+    if(newLineWidth < LINE_WIDTH_MIN) {
+        newLineWidth = LINE_WIDTH_MIN;
+    } else if(newLineWidth > LINE_WIDTH_MAX) {
+        newLineWidth = LINE_WIDTH_MAX;
+    }
+
+    drawingState.lineWidth = newLineWidth;
+    // MIN-MAXの範囲に調整された値で上書きする。
+    e.target.value = newLineWidth.toString();
 }
