@@ -2,10 +2,10 @@
 title: Rectangle Drawer
 ---
 
-<article>
+<article class='content'>
   <h1>Rectangle Drawer</h1>
 
-  <section>
+  <section class='content__section'>
     <h2>使用方法</h2>
     <p>
       クリップボードの画像をペーストすると、白枠のところに画像が取り込まれる。<br>
@@ -14,16 +14,49 @@ title: Rectangle Drawer
     <ul class='list'>
       <li class='list__item'>Copy: クリップボードに画像をコピーする。</li>
       <li class='list__item'>Reset: 編集内容をすべて削除し、初期状態にする。</li>
+      <li class='list__item'>Upsize: 画像サイズを拡大する。</li>
+      <li class='list__item'>Downsize: 画像サイズを縮小する。</li>
     </ul>
+    <p>
+      <span class='warning-text'>Upsize/Downsizeを行うと、描画中の矩形が削除されます。</span>
+    </p>
   </section>
 
-  <section>
+  <section class='content__section'>
+    <h2>設定</h2>
+    <div class='setting'>
+      <label for='lineColor'
+             class='setting__label'>
+        Line Color
+      </label>
+      <input type='color'
+             id='lineColor'
+             name='lineColor'
+             class='setting__input'/>
+      <label for='lineWidth'
+             class='setting__label'>
+        Width
+      </label>
+      <input type='number'
+             id='lineWidth'
+             name='lineWidth'
+             class='setting__input'/>
+    </div>
+  </section>
+
+  <section class='content__section'>
     <div>
       <button type='button' class='button' id='copyButton'>
         Copy
       </button>
       <button type='button' class='button' id='resetButton'>
         Reset
+      </button>
+      <button type='button' class='button' id='upsizeButton'>
+        Upsize
+      </button>
+      <button type='button' class='button' id='downsizeButton'>
+        Downsize
       </button>
     </div>
 
