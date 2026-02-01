@@ -1,3 +1,26 @@
+.content {}
+
+.content__section + .content__section {
+    margin-top: 1em;
+}
+
+.setting {
+    display: flex;
+    align-items: center;
+}
+
+.setting__label {}
+
+.setting__input {}
+
+.setting__label + .setting__input {
+    margin-left: 0.5em;
+}
+
+.setting__input + .setting__label {
+    margin-left: 1em;
+}
+
 .canvas {}
 
 .canvas--on-dark {

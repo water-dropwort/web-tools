@@ -1,3 +1,8 @@
+const LINE_COLOR_DEFAULT = "#ffa500";
+const LINE_WIDTH_DEFAULT = 2;
+const LINE_WIDTH_MIN = 1;
+const LINE_WIDTH_MAX = 10;
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const drawingState = {
@@ -9,12 +14,18 @@ const drawingState = {
     scale: null,
     endX: null,
     endY: null,
+    lineColor: null,
+    lineWidth: null,
 };
 const resetButton = document.getElementById('resetButton');
 const copyButton = document.getElementById('copyButton');
 const upsizeButton = document.getElementById('upsizeButton');
 const downsizeButton = document.getElementById('downsizeButton');
+const lineColorPicker = document.getElementById('lineColor');
+const lineWidthInput = document.getElementById('lineWidth');
 
+// 画面が読み込まれたときに初期化処理を実行する。
+window.addEventListener("load", startup, false);
 
 // 画像をクリップボードからキャンバスに貼り付ける
 document.addEventListener('paste', (e) => {
@@ -109,6 +120,27 @@ downsizeButton.addEventListener('click', (e) => {
     resize(drawingState.scale);
 });
 
+
+// カラーピッカーで色が変更されたら、それ以降に描画する矩形の線色を変更する。
+// すでに描画されている矩形の線色は変わらない。
+lineColorPicker.addEventListener('change', lineColorChanged, false);
+
+
+// 矩形の線幅を変更する。
+lineWidthInput.addEventListener('change', lineWidthChanged, false);
+
+
+// 初期化処理
+function startup() {
+    drawingState.lineColor = LINE_COLOR_DEFAULT;
+    lineColorPicker.value = LINE_COLOR_DEFAULT;
+
+    drawingState.lineWidth = LINE_WIDTH_DEFAULT;
+    lineWidthInput.value = LINE_WIDTH_DEFAULT.toString();
+    lineWidthInput.max = LINE_WIDTH_MAX.toString();
+    lineWidthInput.min = LINE_WIDTH_MIN.toString();
+}
+
 // クリップボードから画像を取得し、URLを返す。
 function getImageObjURL(clipboardData) {
     for(const item of clipboardData.items) {
@@ -135,13 +167,12 @@ function drawRectangle({startX, startY, endX, endY}, isPreview = false) {
         ctx.setLineDash([]);
     }
 
-    ctx.strokeStyle = 'orange';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = drawingState.lineColor;
+    ctx.lineWidth = drawingState.lineWidth;
     ctx.strokeRect(minX, minY, maxX - minX, maxY - minY);
 
     ctx.restore();
 }
-
 
 // 画像のサイズを拡縮する
 // 拡大縮小を繰り返すと画像が荒くなるので、元画像（rawImage）を拡大縮小する。
@@ -163,4 +194,25 @@ function resize(scale) {
     canvas.height = newHeight;
 
     ctx.drawImage(srcCanvas, 0, 0, newWidth, newHeight);
+}
+
+// 矩形の線色を変更する。
+function lineColorChanged(e) {
+    drawingState.lineColor = e.target.value;
+}
+
+// 矩形の線幅を変更する。
+function lineWidthChanged(e) {
+    let newLineWidth = e.target.valueAsNumber;
+
+    // MIN-MAXの範囲になるように調整する。
+    if(newLineWidth < LINE_WIDTH_MIN) {
+        newLineWidth = LINE_WIDTH_MIN;
+    } else if(newLineWidth > LINE_WIDTH_MAX) {
+        newLineWidth = LINE_WIDTH_MAX;
+    }
+
+    drawingState.lineWidth = newLineWidth;
+    // MIN-MAXの範囲に調整された値で上書きする。
+    e.target.value = newLineWidth.toString();
 }
